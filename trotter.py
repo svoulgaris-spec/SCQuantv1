@@ -40,7 +40,7 @@ class ButterflyOrthogonalAnsatz(VariationalAnsatz):
         Z = np.array([[1, 0], [0, -1]], dtype=complex)  # Pauli-Z matrix
         H1 = np.kron(np.kron(np.kron(X, I), I), I)
         H2 = np.kron(np.kron(np.kron(Y, I), I), I)
-        H3 = np.kron(np.kron(np.kron(X, I), I), I)
+        H3 = np.kron(np.kron(np.kron(Z, I), I), I)
 
         super().__init__(num_qubits)
         theta = iter(ParameterVector(param_prefix, d * num_qubits//2))
