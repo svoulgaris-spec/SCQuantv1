@@ -14,26 +14,19 @@ class ButterflyOrthogonalAnsatz(VariationalAnsatz):
         """
         Construct the so-called "Butterfly" orthogonal quantum layer as
         illustrated in Fig. 8 of "Quantum Vision Transformers" by Cherrat et al.
+        Includes a Suzuki-Trotter implementation
 
         :EXAMPLE:
 
             >>> from ionqvision.ansatze.ansatz_library import ButterflyOrthogonalAnsatz
             >>> ansatz = ButterflyOrthogonalAnsatz(4)
-            >>> ansatz.draw()
-                 ┌────────────┐               ░ ┌────────────┐ ░ 
-            q_0: ┤0           ├───────────────░─┤0           ├─░─
-                 │            │┌────────────┐ ░ │  RBS(θ[2]) │ ░ 
-            q_1: ┤  RBS(θ[0]) ├┤0           ├─░─┤1           ├─░─
-                 │            ││            │ ░ ├────────────┤ ░ 
-            q_2: ┤1           ├┤  RBS(θ[1]) ├─░─┤0           ├─░─
-                 └────────────┘│            │ ░ │  RBS(θ[3]) │ ░ 
-            q_3: ──────────────┤1           ├─░─┤1           ├─░─
-                               └────────────┘ ░ └────────────┘ ░ 
+
         """
         d = int(log(num_qubits, 2))
         if abs(log(num_qubits, 2) - d) > 1e-8:
             raise ValueError("num_qubits nums be a power of 2")
 
+        # defines matrices needed for Suzuki-Trotter Circuit
         I = np.array([[1, 0], [0, 1]], dtype=complex)  # Identity matrix
         X = np.array([[0, 1], [1, 0]], dtype=complex)  # Pauli-X matrix
         Y = np.array([[0, -1j], [1j, 0]], dtype=complex)  # Pauli-Y matrix
@@ -50,6 +43,7 @@ class ButterflyOrthogonalAnsatz(VariationalAnsatz):
                     offset = i*2**(depth + 1)
                     qubits = [offset + j, offset + j + 2**depth]
                     self.rbs(next(theta), *qubits)
+                    # Suzuki-Trotter Circuit
                     self.append(self._evolve(H1, 1).to_instruction(), range(num_qubits))
                     self.append(self._evolve(H2, 1).to_instruction(), range(num_qubits))
                     self.append(self._evolve(H3, 1).to_instruction(), range(num_qubits))
