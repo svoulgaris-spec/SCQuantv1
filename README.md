@@ -5,13 +5,15 @@ Quintum's presented solution to the IonQ Challenge at SCQuantathonv1 October 202
 
 IonQ Challenge: Our goal was to use quantum machine learning (QML) by using a hybrid model with classical pre- and post- processing with a quantum layer in between consisting of an encoder, ansatz, and quantum features. In our final solution, we tweaked the AngleEncoder to improve its performance, built the EfficientSU(2) ansatz we came across while researching the problem, and attempted to implement a Suzuki-Trotter circuit to make training more effecient through the use of time evolution.
 
+Presentation: https://docs.google.com/presentation/d/1JhAcrnbOr-5n9jS4qsYPK9p12tqQ8EeiRoNt4-AbgaU/edit?usp=sharing
+
 ## Submitted Files
 - AngleEncoderRots.py: A library containing AngleEncoderX, AngleEncoderY, and AngleEncoderZ. All of them are the same base encoder for the quantum layer, with the difference being whether the X, Y, or Z axis rotation is applied to the qubits.
 - QAOAnsatz.ipynb: This function calls the ansatz_library to use the QAOAAnsatz ansatz. It currently runs 8 bits and is run in a jupyter notebook. By clicking play, we can set up the quantum layer and train the model.  
 - ansatz_library.py: A library containing AngleEncoder, BrickworkLayoutAnsatz, ButterflyOrthogonalAnsatz, CrossOrthogonalAnsatz, QAOAAnsatz, QCNAnsatz, and UnaryEncoder Ansatz. These functions can be attached to quantum circuits with qubits to to encode the quantum solution. 
 - su2.py: This library implements the Efficient SU(2) ansatz using the existing IonQVision framework. This class can be called like any other function in the ansatz_library. While this class was not implemented in our final solution, we would like to see how it could integrated with the Suzuki-Trotter implementation
 - trotter.py: This library implements an interweaving Butterfly Orthogonal ansatz with the Suzuki-Trotter circuit implementation. We would like to eventually implement an interweaving Suzuki-Trotter for other ansatzes.
-- butterflyTrotterNotebook.ipynb: This function calls the trotter library to use the ButterflyOrthogonalAnsatz class. It currently runs 4 bits and is run in a jupyter notebook. Our quantum layer consists of a Butterfly Orthogonal ansatz with an interweaving Suzuki-Trotter implementation. The accompanying encoder is the AngleEncoderY from the AngleEncoderRots library. THIS IS OUR GOLDEN CHILD.  
+- butterflyTrotterNotebook.ipynb: This function calls the trotter library to use the ButterflyOrthogonalAnsatz class. It currently runs 4 bits and is run in a jupyter notebook. Our quantum layer consists of a Butterfly Orthogonal ansatz with an interweaving Suzuki-Trotter implementation. The accompanying encoder is the AngleEncoderY from the AngleEncoderRots library. THIS IS OUR GOLDEN CHILD.
 
 ## Key Concepts for Stacking the BOFT Ansatz with Suzuki-Trotter:
 1. Ansatz: This refers to the parametric quantum circuit (like your Butterfly
