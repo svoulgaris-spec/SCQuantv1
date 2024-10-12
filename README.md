@@ -25,9 +25,8 @@ Hamiltonians (used to evolve states) are involved.
 You split those operations using Suzuki-Trotter, simulating the evolution in
 smaller steps.
 3. Combine the Suzuki-Trotter Evolution with the Ansatz:
-Keep the Butterfly Orthogonal Ansatz intact, but layer Suzuki-Trotter
-steps either before or after the segments that involve heavy interaction
-(like CNOT or controlled-U gates).
+Layer Suzuki-Trotter steps either before or after the segments that
+involve heavy interaction (like CNOT or controlled-U gates).
 Quantum 3
 The decomposition acts as an improvement on specific parts, while the
 rest of your ansatz remains unchanged.
@@ -42,8 +41,7 @@ def butterfly_ansatz(params, qubits):
   return
 def suzuki_trotter_hamiltonian_evolution(hamiltonian, qubits,
 steps):
-  # Decompose the Hamiltonian evolution using Suzuki-Trotte
-r steps
+  # Decompose the Hamiltonian evolution using Suzuki-Trotter steps
   for _ in range(steps):
     for term in hamiltonian:
       apply_single_term_exp(term, qubits)
