@@ -8,9 +8,10 @@ IonQ Challenge: Our goal was to use quantum machine learning (QML) by using a hy
 ## Submitted Files
 - AngleEncoderRots.py: A library containing AngleEncoderX, AngleEncoderY, and AngleEncoderZ. All of them are the same base encoder for the quantum layer, with the difference being whether the X, Y, or Z axis rotation is applied to the qubits.
 - QAOAnsatz.ipynb: This function calls the ansatz_library to use the QAOAAnsatz ansatz. It currently runs 8 bits and is run in a jupyter notebook. By clicking play, we can set up the quantum layer and train the model.  
-- ansatz_library.py: A library containing AngleEncoder, BrickworkLayoutAnsatz, ButterflyOrthogonalAnsatz, CrossOrthogonalAnsatz, QAOAAnsatz, QCNAnsatz, and UnaryEncoder Ansatz. These functions can be attached to quantum circuits with qbits to to encode the quantum solution. 
+- ansatz_library.py: A library containing AngleEncoder, BrickworkLayoutAnsatz, ButterflyOrthogonalAnsatz, CrossOrthogonalAnsatz, QAOAAnsatz, QCNAnsatz, and UnaryEncoder Ansatz. These functions can be attached to quantum circuits with qubits to to encode the quantum solution. 
 - su2.py: This library implements the Efficient SU(2) ansatz using the existing IonQVision framework. This class can be called like any other function in the ansatz_library. While this class was not implemented in our final solution, we would like to see how it could integrated with the Suzuki-Trotter implementation
 - trotter.py: This library implements an interweaving Butterfly Orthogonal ansatz with the Suzuki-Trotter circuit implementation. We would like to eventually implement an interweaving Suzuki-Trotter for other ansatzes.
+- butterflyTrotterNotebook.ipynb: This function calls the trotter library to use the ButterflyOrthogonalAnsatz class. It currently runs 4 bits and is run in a jupyter notebook. Our quantum layer consists of a Butterfly Orthogonal ansatz with an interweaving Suzuki-Trotter implementation. The accompanying encoder is the AngleEncoderY from the AngleEncoderRots library. THIS IS OUR GOLDEN CHILD.  
 
 ## Key Concepts for Stacking the BOFT Ansatz with Suzuki-Trotter:
 1. Ansatz: This refers to the parametric quantum circuit (like your Butterfly
