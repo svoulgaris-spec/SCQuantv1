@@ -32,29 +32,30 @@ Quantum 3
 The decomposition acts as an improvement on specific parts, while the
 rest of your ansatz remains unchanged.
 Here’s a simplified Python-style pseudocode example to illustrate this approach:
+```
 def butterfly_ansatz(params, qubits):
-  "#" Define your butterfly orthogonal ansatz here
-  "#" Parametric layers with entangling gates and rotations
+  # Define your butterfly orthogonal ansatz here
+  # Parametric layers with entangling gates and rotations
   for i in range(len(qubits)):
     apply_rotational_layer(params[i], qubits[i])
     apply_entangling_layer(qubits[i], qubits[i+1])
   return
 def suzuki_trotter_hamiltonian_evolution(hamiltonian, qubits,
 steps):
-  "#" Decompose the Hamiltonian evolution using Suzuki-Trotte
+  # Decompose the Hamiltonian evolution using Suzuki-Trotte
 r steps
   for _ in range(steps):
     for term in hamiltonian:
       apply_single_term_exp(term, qubits)
   return
 def quantum_circuit_with_enhancement(params, qubits, hamiltonian, trotter_steps):
-  "#" Start with the original ansatz
+  # Start with the original ansatz
   butterfly_ansatz(params, qubits)
-  "#" Apply Suzuki-Trotter decomposition as an enhancement suzuki_trotter_hamiltonian_evolution(hamiltonian, qubits, trotter_steps)
+  # Apply Suzuki-Trotter decomposition as an enhancement suzuki_trotter_hamiltonian_evolution(hamiltonian, qubits, trotter_steps)
   
-  "#" Continue with another layer of ansatz if needed
+  # Continue with another layer of ansatz if needed
   butterfly_ansatz(params, qubits)
-
+```
 # Explanation:
 1. butterfly_ansatz: This represents your original Butterfly Orthogonal Ansatz. It applies a series of parametric gates like rotational and entangling layers.
 2. suzuki_trotter_hamiltonian_evolution: This applies the Suzuki-Trotter decomposition to simulate the Hamiltonian evolution on the selected qubits. It breaks down the Hamiltonian into simpler terms, applying the evolution in a series of steps to maintain accuracy.
