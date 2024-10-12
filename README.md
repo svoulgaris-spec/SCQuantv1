@@ -1,5 +1,10 @@
 # The Quintum Quantum Classifier
 
+# Introduction:
+Quintum's presented solution to the IonQ Challenge at SCQuantathonv1 October 2024. 
+
+IonQ Challenge: Our goal was to use quantum machine learning (QML) by using a hybrid model with classical pre- and post- processing with a quantum layer in between pertaining to an encoder, ansatz, and quantum features. 
+
 # Key Concepts for Stacking the BOFT Ansatz with Suzuki-Trotter:
 1. Ansatz: This refers to the parametric quantum circuit (like your Butterfly
 Orthogonal Ansatz) that encodes your quantum solution. It remains as the
@@ -27,7 +32,7 @@ smaller steps.
 3. Combine the Suzuki-Trotter Evolution with the Ansatz:
 Layer Suzuki-Trotter steps either before or after the segments that
 involve heavy interaction (like CNOT or controlled-U gates).
-Quantum 3
+
 The decomposition acts as an improvement on specific parts, while the
 rest of your ansatz remains unchanged.
 Here’s a simplified Python-style pseudocode example to illustrate this approach:
